@@ -11,3 +11,6 @@ class Interfaz:
     def frames_root(self): 
         self.barra_superior = tk.Frame(self.root, background= "#1f2329",height=50)
         self.barra_superior.pack(side= TOP, fill = "both")
+        
+        self.cuerpo = tk.Frame(self.root, background="#f1faff",width =150)
+        self.cuerpo.pack(side= RIGHT, fill = "both", expand=True)
