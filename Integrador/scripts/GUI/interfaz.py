@@ -45,3 +45,11 @@ class Interfaz:
         button.config(anchor="center", font = ("Helvetica",18), bd=0,
             background="#2a3138", fg="white", width=20, height=2)
         button.pack(side= TOP,fill=X)
+
+#CREACIÓN DE VENTANAS SECUNDARIAS
+   # _______MÉTODO PARA ABRIR VENTANA DE INICIO DE SESIÓN__________
+    def open_subpage_login(self):
+        self.root.destroy()  # Cierra la ventana principal
+        login_root = tk.Tk()
+        app = Login(login_root)
+        login_root.mainloop()
