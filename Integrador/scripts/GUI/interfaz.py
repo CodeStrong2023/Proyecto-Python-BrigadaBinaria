@@ -37,3 +37,11 @@ class Interfaz:
             self.button_subpage_investments,
             self.button_export_logs
         ]
+    #recorremos la lista para mostrar los botones de las secciones
+        for button in buttons_titles:
+            self.configurar_boton_menu(button)
+            
+    def configurar_boton_menu(self, button):
+        button.config(anchor="center", font = ("Helvetica",18), bd=0,
+            background="#2a3138", fg="white", width=20, height=2)
+        button.pack(side= TOP,fill=X)
