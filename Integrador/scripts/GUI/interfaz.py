@@ -29,3 +29,11 @@ class Interfaz:
         self.button_subpage_budget = tk.Button(self.menu_lateral, text="Presupuestos",command=self.open_subpage_budget)
         self.button_subpage_investments = tk.Button(self.menu_lateral,text="Inversiones",command=self.open_subpage_investments)
         self.button_export_logs = tk.Button(self.menu_lateral,text="Registros",command=self.open_export_logs)
+
+    buttons_titles = [   #creamos una lista para almacenar los botones
+            self.button_subpage_login,
+            self.button_subpage_inc_exp,
+            self.button_subpage_budget,
+            self.button_subpage_investments,
+            self.button_export_logs
+        ]
