@@ -10,7 +10,7 @@
             <nav class="navegacion">
                 <ul>
                   <li><a href="{{ url_for('login') }}">Inicio</a></li>  
-                    <li><a href="{{ url_for('inc_exp') }}">Ingresos y gastos</a></li>
+                    <li><a href="{{ url_for('incomes_expenses') }}">Ingresos y gastos</a></li>
                     <li><a href="{{ url_for('budget') }}">Presupuestos</a></li>
                     <li><a href="{{ url_for('profile') }}"class="btn"><button>Mi perfil</button></a></li>
                 </ul>
@@ -31,7 +31,7 @@
         <div class="modulo1">
             <img src="{{ url_for('static', filename='images/2.png')}}" alt="ícono ingresos">
             <h2 class="inc">
-                <a href="{{ url_for('inc_exp') }}" class="button">Ingresos y gastos</a>
+                <a href="#" class="button">Ingresos y gastos</a>
             </h2>     
             <p>Registrar ingresos y gastos te da una visión clara de tus finanzas. Esto te permite identificar hábitos y tomar decisiones informadas</p>
         </div>
