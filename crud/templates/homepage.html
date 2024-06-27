@@ -4,6 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aplicación de finanzas</title>
+    <header>
+        <div class="barra">
+            <a href="" class="logo"><img src="{{ url_for('static', filename='images/utn.png') }}" alt="Logo UTN"></a>   
+            <nav class="navegacion">
+                <ul>
+                  <li><a href="{{ url_for('login') }}">Inicio</a></li>  
+                    <li><a href="{{ url_for('inc_exp') }}">Ingresos y gastos</a></li>
+                    <li><a href="{{ url_for('budget') }}">Presupuestos</a></li>
+                    <li><a href="{{ url_for('profile') }}"class="btn"><button>Mi perfil</button></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>  
     <link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
 </head>
 <body>
