@@ -1,1 +1,46 @@
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse</title>
+    <link rel="stylesheet" href="#">
+</head>
+<body>
+    <!--FORMULARIO DE REGISTRO DE NUEVOS USUARIOS--> 
+    <h2 id="title">Formulario de registro <hr> </h2>
+    <form name="registro" id="register" method="POST" autocomplete="off">
+        <div class="row">
+            <div>
+                <label for="nombre" >Nombre</label>
+                <input type="text" required name="nombre" class="form-control" autofocus required>
+            </div>
+            <div>
+                <label for="apellido" >Apellido</label>
+                <input type="text" required name="apellido" class="form-control" required>
+            </div>
+        </div>
+        <div>
+            <label for="email" >Email</label>
+            <input type="email" required name="email" class="form-control" required>
+        </div>
+        <div class="row">
+            <div>
+                <label for="password" >Password</label>
+                <input type="password" required name="password" class="form-control" required>
+            </div>
+            <div>
+                <label for="repite_password" >Repetir password</label>
+                <input type="password" required name="repite_password" class="form-control" required>
+            </div>
+        </div>
+        <div>
+            <input type="submit" class="boton-enviar-reg" id="sendForm" value="Registrarse">
+        </div>
+        <div class="tiene-cuenta">
+            <span>¿Ya tienes cuenta?</span>
+            <a href="#" id="link-login" class="ir-login">Iniciar sesión</a>
+        </div>
+    </form>
+</body>
+</html>
