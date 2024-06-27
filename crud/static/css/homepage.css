@@ -12,3 +12,26 @@ header{
     text-decoration: none;
     font-family: sans-serif;
 }
+.barra{
+    max-width: 100%;
+    padding: 0 10px;
+    margin: auto; 
+}
+.logo{
+    float:left;
+    padding: 15px 20px 0;
+}
+.logo img{
+    height: 60px;
+}
+.navegacion{
+        float: right;
+        display: flex;
+        align-items: center;
+        min-height: 90px;
+        z-index: 1000;
+}
+.navegacion ul{
+        list-style: none;
+        padding: 0 10px;
+}
