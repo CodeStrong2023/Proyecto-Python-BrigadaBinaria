@@ -1,5 +1,7 @@
-from flask import Flask, render_template
-from conexiondb import get_db_connection
+from flask import Flask, render_template, request, flash, url_for, redirect, session
+from werkzeug.security import generate_password_hash, check_password_hash
+#from conexiondb import get_db_connection
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -24,7 +26,7 @@ def login():
         else:
             conn.close()
             flash('Email o contraseña incorrectos')
-    return render_template('login.html')
+        return render_template('login.html')
 
 @app.route("/profile", methods=['GET', 'POST'])
 def profile():
