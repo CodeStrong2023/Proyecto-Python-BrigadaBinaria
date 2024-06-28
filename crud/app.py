@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, flash, url_for, redirect, session
 from werkzeug.security import generate_password_hash, check_password_hash
-#from conexiondb import get_db_connection
+from conexiondb import get_db_connection
+from psycopg2.extras import RealDictCursor
 
 app = Flask(__name__)
 
@@ -15,7 +16,7 @@ def login():
         password = request.form['password']
         
         conn = get_db_connection()
-        cur = conn.cursor(cursor_factory=RealDictCursor)
+        cur = conn.cursor(cursor_factory = RealDictCursor)
         cur.execute('SELECT * FROM usuarios WHERE email = %s', (email,))
         user = cur.fetchone()
         cur.close()
