@@ -64,6 +64,36 @@ cursor: pointer;
 transition: all 0.3s ease 0s;
 }
 
+body{
+    background-color:rgb(91, 44, 111);
+    font-family: sans-serif;
+}
+.container1 {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 200px);
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Asegura que el pseudo-elemento no sobresalga del contenedor */
+}
+.container1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(34, 10, 44, 0.5), rgba(34, 10, 44, 0.5)), url('/static/images/main-image.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    opacity: 0.5; 
+    z-index: 1;
+
+}
 
 /* FOOTER */
 .pie-pagina {
