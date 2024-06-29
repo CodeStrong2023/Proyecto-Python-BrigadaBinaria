@@ -134,6 +134,19 @@ def add_income():
     conn.close()
     return redirect(url_for('incomes_expenses'))
 
+@app.route("/delete_income/<int:income_id>")
+def delete_income(income_id):
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+    user_id = session['user_id']
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute('DELETE FROM ingresos WHERE id = %s AND usuario_id = %s', (income_id, user_id))
+    conn.commit()
+    cur.close()
+    conn.close()
+    return redirect(url_for('incomes_expenses'))
+
 
 
 
