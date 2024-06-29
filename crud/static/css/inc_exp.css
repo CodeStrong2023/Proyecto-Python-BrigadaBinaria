@@ -25,3 +25,42 @@ header{
 .logo img{
     height: 60px;
 }
+.navegacion{
+        float: right;
+        display: flex;
+        align-items: center;
+        min-height: 90px;
+        z-index: 1000;
+}
+.navegacion ul{
+        list-style: none;
+        padding: 0 10px;
+}
+.navegacion ul li{
+        display: inline-block;
+        position: relative;
+        transition: .3s linear;
+        z-index: 1000;
+}
+.navegacion ul li:hover{
+   transform: scale(1.1);
+}
+.navegacion ul li a{
+    color:#ffffff;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 12px 20px;
+    transition: .3s linear;
+}
+.navegacion .btn button{
+    font-weight: 700;
+    color: #7D3C98;
+    padding: 9px 25px;
+    background: #eceff1;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
