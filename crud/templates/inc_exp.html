@@ -93,5 +93,49 @@
         </div>
     </div>
 
+
+     <!-- Tabla de ingresos y gastos -->
+     <h3>Resumen</h3>
+     <table id="inc-exp-table">
+         <thead>
+             <tr>
+                 <th>Tipo</th>
+                 <th>Fecha</th>
+                 <th>Monto</th>
+                 <th>Categoría</th>
+                 <th>Descripción</th>
+                 <th>Acciones</th>
+             </tr>
+         </thead>
+         <tbody>
+             {% for income in incomes %}
+             <tr>
+                 <td>Ingreso</td>
+                 <td>{{ income.fecha }}</td>
+                 <td>{{ income.monto }}</td>
+                 <td>{{ income.categoria}}</td>
+                 <td>{{ income.descripcion }}</td>
+                 <td>
+                     <a href="{{ url_for('edit_income', income_id=income.id) }}" class="btn-edit">Modificar</a>
+                     <a href="{{ url_for('delete_income', income_id=income.id) }}" class="btn-delete" onclick="return confirm('¿Estás seguro de que deseas eliminar este ingreso?');">Eliminar</a>
+                 </td>
+             </tr>
+             {% endfor %}
+             {% for expense in expenses %}
+             <tr>
+                 <td>Gasto</td>
+                 <td>{{ expense.fecha }}</td>
+                 <td>{{ expense.monto }}</td>
+                 <td>{{ expense.categoria }}</td>
+                 <td>{{ expense.descripcion }}</td>
+                 <td>
+                     <a href="{{ url_for('edit_expense', expense_id=expense.id) }}" class="btn-edit">Modificar</a>
+                     <a href="{{ url_for('delete_expense', expense_id=expense.id) }}" class="btn-delete" onclick="return confirm('¿Estás seguro de que deseas eliminar este gasto?');">Eliminar</a>
+                 </td>
+             </tr>
+             {% endfor %}
+         </tbody>
+     </table>
+
 </body>
 </html>
