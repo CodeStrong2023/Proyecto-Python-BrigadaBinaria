@@ -10,3 +10,11 @@ head {
     text-align: center;
     margin-bottom: 30px;
 }
+
+h2 {
+    color: #7D3C98;
+    font-size: 80px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
