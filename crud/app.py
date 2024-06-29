@@ -157,6 +157,7 @@ def delete_income(income_id):
     cur.close()
     conn.close()
     return redirect(url_for('incomes_expenses'))
+
 @app.route("/add_expense", methods=['POST'])
 def add_expense():
     if 'user_id' not in session:
@@ -174,6 +175,7 @@ def add_expense():
     cur.close()
     conn.close()
     return redirect(url_for('incomes_expenses'))
+
 @app.route("/edit_expense/<int:expense_id>", methods=['GET', 'POST'])
 def edit_expense(expense_id):
     if 'user_id' not in session:

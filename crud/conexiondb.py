@@ -6,7 +6,7 @@ def get_db_connection():
         conn = connect(
             dbname="crud_finanzas",
             user="postgres",
-            password="admin",
+            password="Angi#Mono",
             host="localhost",
             port="5432"
         )
