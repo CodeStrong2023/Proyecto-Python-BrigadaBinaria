@@ -174,5 +174,28 @@ def add_expense():
     cur.close()
     conn.close()
     return redirect(url_for('incomes_expenses'))
-v
+@app.route("/edit_expense/<int:expense_id>", methods=['GET', 'POST'])
+def edit_expense(expense_id):
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+    user_id = session['user_id']
+    conn = get_db_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    if request.method == 'POST':
+        fecha = request.form['date']
+        monto = request.form['amount']
+        categoria = request.form['category']
+        descripcion = request.form['description']
+        cur.execute('UPDATE gastos SET fecha = %s, monto = %s, categoria = %s, descripcion = %s WHERE id = %s AND usuario_id = %s',
+                    (fecha, monto, categoria, descripcion, expense_id, user_id))
+        conn.commit()
+        cur.close()
+        conn.close()
+        return redirect(url_for('incomes_expenses'))
+    cur.execute('SELECT * FROM gastos WHERE id = %s AND usuario_id = %s', (expense_id, user_id))
+    expense = cur.fetchone()
+    cur.close()
+    conn.close()
+    return render_template("inc_exp.html", expense=expense)
+
 
