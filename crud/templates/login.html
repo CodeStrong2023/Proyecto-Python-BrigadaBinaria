@@ -20,18 +20,18 @@
     {% endwith %}
 
     <form action="{{ url_for('login') }}" method="POST" autocomplete="off">
-        <div>
+        <div class="email">
             <label for="email" class="form-label">Ingrese su email</label>
             <input type="email" name="email" id="email" class="form-control" required>
         </div>
-        <div>
+        <div class="password">
             <label for="password" class="form-label">Ingrese su contraseña</label>
             <input type="password" name="password" class="form-control" required>
         </div>
-        <div>
+        <div class="enviar">
             <button type="submit" class="boton-enviar">Iniciar sesión</button>
         </div>
-        <div>
+        <div class="sin-cuenta">
             <span>No tienes cuenta?</span>
             <a href="{{ url_for('registrarse') }}" id="link-registrarse" class="crear-usuario">Crear cuenta</a>
         </div>
