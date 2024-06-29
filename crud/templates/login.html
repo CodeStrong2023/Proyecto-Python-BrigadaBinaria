@@ -1,12 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
 </head>
 <body>
-    <form action="link de la otra pàgina" method="POST" autocomplete="off">
+    <h2 class="formulario" id="title">Iniciar sesión<hr></h2>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash-messages">
+          {% for message in messages %}
+            <div class="flash-message">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form action="{{ url_for('login') }}" method="POST" autocomplete="off">
         <div>
             <label for="email" class="form-label">Ingrese su email</label>
             <input type="email" name="email" id="email" class="form-control" required>
@@ -20,7 +33,7 @@
         </div>
         <div>
             <span>No tienes cuenta?</span>
-            <a href="#" id="link-registrarse" class="crear-usuario">Crear cuenta</a>
+            <a href="{{ url_for('registrarse') }}" id="link-registrarse" class="crear-usuario">Crear cuenta</a>
         </div>
     </form>
 </body>
