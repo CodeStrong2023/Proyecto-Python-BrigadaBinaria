@@ -93,6 +93,41 @@
         </div>
     </div>
 
+    <!-- Formulario para editar ingreso -->
+{% if income %}
+<div class="edit_form">
+    <h3>Modificar Ingreso</h3>
+    <form id="edit-income" action="{{ url_for('edit_income', income_id=income.id) }}" method="POST">
+        <div class="form-row">
+            <div class="form-column">
+                <label for="date-income-edit" class="form-label">Fecha</label>
+                <input type="date" name="date" id="date-income-edit" class="form-control" value="{{ income.fecha }}" required>
+            </div>
+            <div class="form-column">
+                <label for="amount-income-edit" class="form-label">Monto</label>
+                <input type="number" step="0.01" name="amount" id="amount-income-edit" class="form-control" value="{{ income.monto }}" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-column">
+                <label for="category-income-edit" class="form-label">Categoría</label>
+                <select name="category" id="category-income-edit" class="form-control" required>
+                    <option value="sueldo" {% if income.categoria == 'sueldo' %} selected {% endif %}>Sueldo</option>
+                    <option value="inversiones" {% if income.categoria == 'inversiones' %} selected {% endif %}>Inversiones</option>
+                    <option value="alquileres" {% if income.categoria == 'alquileres' %} selected {% endif %}>Alquileres</option>
+                    <option value="venta de artículos" {% if income.categoria == 'venta de artículos' %} selected {% endif %}>Venta de artículos</option>
+                    <option value="otros" {% if income.categoria == 'otros' %} selected {% endif %}>Otros</option>
+                </select>
+            </div>
+            <div class="form-column">
+                <label for="description-income-edit" class="form-label">Descripción</label>
+                <input type="text" name="description" id="description-income-edit" class="form-control" value="{{ income.descripcion }}">
+            </div>
+        </div>
+        <button type="submit" class="boton-enviar">Guardar cambios</button>
+    </form>
+</div>
+{% endif %}
 
      <!-- Tabla de ingresos y gastos -->
      <h3>Resumen</h3>
