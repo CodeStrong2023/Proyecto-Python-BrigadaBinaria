@@ -66,3 +66,30 @@ def incomes_expenses():
 @app.route('/registrarse')
 def registrarse():
     return render_template('registrarse.html')
+
+@app.route("/profile", methods=['GET', 'POST'])
+def profile():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+    user_id = session['user_id']
+    conn = get_db_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    cur.execute('SELECT * FROM usuarios WHERE id = %s', (user_id,))
+    user = cur.fetchone()
+    cur.close()
+    conn.close()
+    if request.method == 'POST':
+        nombre = request.form['nombre']
+        apellido = request.form['apellido']
+        email = request.form['email']
+        password = generate_password_hash(request.form['password'])
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute('UPDATE usuarios SET nombre = %s, apellido = %s, email = %s, password = %s WHERE id = %s',
+                    (nombre, apellido, email, password, user_id))
+        conn.commit()
+        cur.close()
+        conn.close()
+        return redirect(url_for('profile'))
+    return render_template("profile.html", user=user)
+
