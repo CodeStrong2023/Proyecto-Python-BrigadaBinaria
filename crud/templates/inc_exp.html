@@ -129,6 +129,44 @@
 </div>
 {% endif %}
 
+    <!-- Formulario para editar gasto -->
+{% if expense %}
+<div class="edit_form">
+    <h3>Modificar Gasto</h3>
+    <form id="edit-expense" action="{{ url_for('edit_expense', expense_id=expense.id) }}" method="POST">
+        <div class="form-row">
+            <div class="form-column">
+                <label for="date-expense-edit" class="form-label">Fecha</label>
+                <input type="date" name="date" id="date-expense-edit" class="form-control" value="{{ expense.fecha }}" required>
+            </div>
+            <div class="form-column">
+                <label for="amount-expense-edit" class="form-label">Monto</label>
+                <input type="number" step="0.01" name="amount" id="amount-expense-edit" class="form-control" value="{{ expense.monto }}" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-column">
+                <label for="category-expense-edit" class="form-label">Categoría</label>
+                <select name="category" id="category-expense-edit" class="form-control" required>
+                    <option value="impuestos" {% if expense.categoria == 'impuestos' %} selected {% endif %}>Impuestos</option>
+                    <option value="servicios" {% if expense.categoria == 'servicios' %} selected {% endif %}>Servicios</option>
+                    <option value="salud e higiene" {% if expense.categoria == 'salud e higiene' %} selected {% endif %}>Salud e Higiene</option>
+                    <option value="alimentación" {% if expense.categoria == 'alimentación' %} selected {% endif %}>Alimentación</option>
+                    <option value="transporte" {% if expense.categoria == 'transporte' %} selected {% endif %}>Transporte</option>
+                    <option value="otros gastos" {% if expense.categoria == 'otros gastos' %} selected {% endif %}>Otros gastos</option>
+                </select>
+            </div>
+            <div class="form-column">
+                <label for="description-expense-edit" class="form-label">Descripción</label>
+                <input type="text" name="description" id="description-expense-edit" class="form-control" value="{{ expense.descripcion }}">
+            </div>
+        </div>
+        <button type="submit" class="boton-enviar">Guardar cambios</button>
+    </form>
+</div>
+{% endif %}
+
+
      <!-- Tabla de ingresos y gastos -->
      <h3>Resumen</h3>
      <table id="inc-exp-table">

@@ -95,6 +95,25 @@ body{
 
 }
 
+.container1 h1{
+    color: rgb(249, 241, 239);
+    font-family: sans-serif;
+    font-size: 80px;
+    text-align:center;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+.container1 p{
+    color:rgb(249, 241, 239);
+    text-align: center;
+    font-size: 25px;
+    font-family: sans-serif;
+    margin-bottom: 35px;
+}
+
+
 /* FOOTER */
 .pie-pagina {
     background-color: rgb(74, 35, 90);
