@@ -2,8 +2,10 @@ from flask import Flask, render_template, request, flash, url_for, redirect, ses
 from werkzeug.security import generate_password_hash, check_password_hash
 from conexiondb import get_db_connection
 from psycopg2.extras import RealDictCursor
+import secrets
 
 app = Flask(__name__)
+app.secret_key = secrets.token_hex(16)
 
 @app.route('/')
 def home():
@@ -11,7 +13,7 @@ def home():
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
-     if request.method == 'POST':
+    if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
         
@@ -27,7 +29,7 @@ def login():
         else:
             conn.close()
             flash('Email o contraseña incorrectos')
-        return render_template('login.html')
+    return render_template('login.html')
     
 @app.route('/budget')
 def budget():
