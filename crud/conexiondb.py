@@ -15,6 +15,9 @@ def get_db_connection():
     except OperationalError as e:
         print(f"Error de conexión a la base de datos: {e}")
         return None
-
+        
+# Ejecución de la función para probar la conexión
 if __name__ == "__main__":
-    app.run(debug=True)
+    connection = get_db_connection()
+    if connection:
+        connection.close()
