@@ -93,3 +93,28 @@ def profile():
         return redirect(url_for('profile'))
     return render_template("profile.html", user=user)
 
+@app.route("/inc_exp")
+def incomes_expenses():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+    
+    user_id = session['user_id']
+    conn = get_db_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    
+    # Obtener ingresos
+    cur.execute('SELECT * FROM ingresos WHERE usuario_id = %s', (user_id,))
+    incomes = cur.fetchall()
+    print("Ingresos obtenidos:", incomes)  # Log para verificar ingresos
+    
+    # Obtener gastos
+    cur.execute('SELECT * FROM gastos WHERE usuario_id = %s', (user_id,))
+    expenses = cur.fetchall()
+    print("Gastos obtenidos:", expenses)  # Log para verificar gastos
+    
+    cur.close()
+    conn.close()
+    return render_template("inc_exp.html", incomes=incomes, expenses=expenses)
+
+
+
