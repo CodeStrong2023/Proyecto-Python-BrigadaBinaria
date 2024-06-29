@@ -159,7 +159,49 @@ body{
     height: 100%;
     border-right: 1.5px solid rgb(64, 23, 81);
 }
-
+.modulo1:hover{
+    width: 50%;
+    height: 100%;
+    border-top: 12px solid rgb(91, 44, 111);
+    border-right: 12px solid rgb(91, 44, 111);
+    border-bottom: 12px solid rgb(91, 44, 111);
+    border-left: 12px solid rgb(91, 44, 111);
+    border-radius: 50px;
+}
+.modulo1 img{
+    height: 150px;
+    padding: 15px 20px 0;
+}
+.modulo1 h2{
+    text-align: center;
+}
+.modulo1 p{
+    text-align: center;
+}
+.modulo2{
+    width: 50%;
+    height: 100%;
+    border-left: 1.5px solid rgb(64, 23, 81);
+}
+.modulo2:hover{
+    width: 50%;
+    height: 100%;
+    border-top: 12px solid rgb(91, 44, 111);
+    border-right: 12px solid rgb(91, 44, 111);
+    border-bottom: 12px solid rgb(91, 44, 111);
+    border-left: 12px solid rgb(91, 44, 111);
+    border-radius: 50px;
+}
+.modulo2 img{
+    height: 150px;
+    padding: 15px 20px 0;
+}
+.modulo2 h2{
+    text-align: center;
+}
+.modulo2 p{
+    text-align: center;
+}
 
 /* FOOTER */
 .pie-pagina {
