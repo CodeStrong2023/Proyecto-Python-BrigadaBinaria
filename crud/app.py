@@ -146,6 +146,23 @@ def delete_income(income_id):
     cur.close()
     conn.close()
     return redirect(url_for('incomes_expenses'))
+@app.route("/add_expense", methods=['POST'])
+def add_expense():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+    user_id = session['user_id']
+    fecha = request.form['date']
+    monto = request.form['amount']
+    categoria = request.form['category']
+    descripcion = request.form['description']
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute('INSERT INTO gastos (usuario_id, fecha, monto, categoria, descripcion) VALUES (%s, %s, %s, %s, %s)',
+                (user_id, fecha, monto, categoria, descripcion))
+    conn.commit()
+    cur.close()
+    conn.close()
+    return redirect(url_for('incomes_expenses'))
 
 
 
