@@ -198,4 +198,5 @@ def edit_expense(expense_id):
     conn.close()
     return render_template("inc_exp.html", expense=expense)
 
-
+if __name__ == "__main__":
+    app.run(debug=True)
