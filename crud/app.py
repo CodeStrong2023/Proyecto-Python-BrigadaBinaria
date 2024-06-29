@@ -174,7 +174,5 @@ def add_expense():
     cur.close()
     conn.close()
     return redirect(url_for('incomes_expenses'))
-
-
-
+v
 
