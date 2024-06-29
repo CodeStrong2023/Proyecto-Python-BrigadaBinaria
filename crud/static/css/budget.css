@@ -8,3 +8,23 @@ body {
     margin: 0;
     background-color: #f0f0f0;
 }
+h2 {
+    color: #7D3C98;
+    font-size: 80px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+hr {
+    width: 800px;
+    height: 4px;
+    background-color: #7D3C98;
+}
+h3 {
+    color: #7D3C98;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
