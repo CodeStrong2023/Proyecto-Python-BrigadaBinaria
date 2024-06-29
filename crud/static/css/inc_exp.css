@@ -63,4 +63,41 @@ header{
     cursor: pointer;
     transition: all 0.3s ease 0s;
 }
+h2 {
+    color:  #7D3C98;
+    font-family: sans-serif;
+    font-size: 80px;
+    text-align:center;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    padding-bottom: 40px;
+}
 
+h3 {
+    color:  #7D3C98;
+    text-transform:capitalize;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form_container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+}
+
+.form_ingresos, .form_gastos {
+    padding: 10px;
+}
+
+form {
+    text-align: center;
+
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
