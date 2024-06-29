@@ -28,6 +28,27 @@ def login():
             conn.close()
             flash('Email o contraseña incorrectos')
         return render_template('login.html')
+    
+@app.route('/budget')
+def budget():
+    return render_template('budget.html')
+
+@app.route("/registrarse", methods=['GET', 'POST'])
+def registrarse():
+    if request.method == 'POST':
+        nombre = request.form['nombre']
+        apellido = request.form['apellido']
+        email = request.form['email']
+        password = generate_password_hash(request.form['password'])
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute('INSERT INTO usuarios (nombre, apellido, email, password) VALUES (%s, %s, %s, %s)',
+                    (nombre, apellido, email, password))
+        conn.commit()
+        cur.close()
+        conn.close()
+        return redirect(url_for('login'))
+    return render_template("registrarse.html")
 
 @app.route("/profile", methods=['GET', 'POST'])
 def profile():
@@ -54,28 +75,6 @@ def profile():
         conn.close()
         return redirect(url_for('profile'))
     return render_template('profile.html')
-
-@app.route('/budget')
-def budget():
-    return render_template('budget.html')
-
-
-@app.route("/registrarse", methods=['GET', 'POST'])
-def registrarse():
-    if request.method == 'POST':
-        nombre = request.form['nombre']
-        apellido = request.form['apellido']
-        email = request.form['email']
-        password = generate_password_hash(request.form['password'])
-        conn = get_db_connection()
-        cur = conn.cursor()
-        cur.execute('INSERT INTO usuarios (nombre, apellido, email, password) VALUES (%s, %s, %s, %s)',
-                    (nombre, apellido, email, password))
-        conn.commit()
-        cur.close()
-        conn.close()
-        return redirect(url_for('login'))
-    return render_template("registrarse.html")
 
 
 @app.route("/inc_exp")
@@ -131,6 +130,30 @@ def delete_income(income_id):
     cur.close()
     conn.close()
     return redirect(url_for('incomes_expenses'))
+
+@app.route("/edit_income/<int:income_id>", methods=['GET', 'POST'])
+def edit_income(income_id):
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+    user_id = session['user_id']
+    conn = get_db_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    if request.method == 'POST':
+        fecha = request.form['date']
+        monto = request.form['amount']
+        categoria = request.form['category']
+        descripcion = request.form['description']
+        cur.execute('UPDATE ingresos SET fecha = %s, monto = %s, categoria = %s, descripcion = %s WHERE id = %s AND usuario_id = %s',
+                    (fecha, monto, categoria, descripcion, income_id, user_id))
+        conn.commit()
+        cur.close()
+        conn.close()
+        return redirect(url_for('incomes_expenses'))
+    cur.execute('SELECT * FROM ingresos WHERE id = %s AND usuario_id = %s', (income_id, user_id))
+    income = cur.fetchone()
+    cur.close()
+    conn.close()
+    return render_template("inc_exp.html", income=income)
 
 @app.route("/add_expense", methods=['POST'])
 def add_expense():
