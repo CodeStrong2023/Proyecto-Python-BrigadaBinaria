@@ -76,7 +76,6 @@ def profile():
         return redirect(url_for('profile'))
     return render_template('profile.html')
 
-
 @app.route("/inc_exp")
 def incomes_expenses():
     if 'user_id' not in session:
@@ -168,6 +167,19 @@ def add_expense():
     cur = conn.cursor()
     cur.execute('INSERT INTO gastos (usuario_id, fecha, monto, categoria, descripcion) VALUES (%s, %s, %s, %s, %s)',
                 (user_id, fecha, monto, categoria, descripcion))
+    conn.commit()
+    cur.close()
+    conn.close()
+    return redirect(url_for('incomes_expenses'))
+
+@app.route("/delete_expense/<int:expense_id>")
+def delete_expense(expense_id):
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+    user_id = session['user_id']
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute('DELETE FROM gastos WHERE id = %s AND usuario_id = %s', (expense_id, user_id))
     conn.commit()
     cur.close()
     conn.close()
