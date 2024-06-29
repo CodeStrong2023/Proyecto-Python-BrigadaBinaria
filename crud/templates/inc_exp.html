@@ -56,5 +56,42 @@
             <button type="submit" class="boton-enviar">Guardar ingreso</button>
         </form>
         </div>
+
+         <!-- Formulario para añadir gastos -->
+         <div class="form_gasto">
+            <h3>Añadir Gasto</h3>
+            <form id="add-expense" action="{{ url_for('add_expense') }}" method="POST">
+                <div class="form-row">
+                    <div class="form-column">
+                        <label for="date-expense" class="form-label">Fecha</label>
+                        <input type="date" name="date" id="date-expense" class="form-control" required>
+                    </div>
+                    <div class="form-column">
+                        <label for="amount-expense" class="form-label">Monto</label>
+                        <input type="number" step="0.01" name="amount" id="amount-expense" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-column">
+                        <label for="category-expense" class="form-label">Categoría</label>
+                        <select name="category" id="category-expense" class="form-control" required>
+                            <option value="impuestos">Impuestos</option>
+                            <option value="servicios">Servicios</option>
+                            <option value="salud e higiene">Salud e Higiene</option>
+                            <option value="alimentación">Alimentación</option>
+                            <option value="transporte">Transporte</option>
+                            <option value="otros gastos">Otros gastos</option>
+                        </select>
+                    </div>
+                    <div class="form-column">
+                        <label for="description-expense" class="form-label">Descripción</label>
+                        <input type="text" name="description" id="description-expense" class="form-control">
+                    </div>
+                </div>
+                <button type="submit" class="boton-enviar">Guardar gasto</button>
+            </form>
+        </div>
+    </div>
+
 </body>
 </html>
