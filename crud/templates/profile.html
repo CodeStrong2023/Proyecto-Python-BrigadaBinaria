@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/registro.css') }}">
 </head>
 <body>
     <!--FORMULARIO PARA ACTUALIZAR DATOS--> 
     <h2 id="title">Editar mi perfil</Em><hr> </h2>
-    <form name="registro" id="register" method="POST" autocomplete="off">
+    <form name="registro" id="register" action="{{ url_for('profile') }}" method="POST" autocomplete="off">
         <div class="row">
             <div>
                 <label for="nombre">Nombre</label>
