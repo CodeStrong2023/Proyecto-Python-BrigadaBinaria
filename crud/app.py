@@ -63,9 +63,23 @@ def budget():
 def incomes_expenses():
     return render_template('inc_exp.html')
 
-@app.route('/registrarse')
+@app.route("/registrarse", methods=['GET', 'POST'])
 def registrarse():
-    return render_template('registrarse.html')
+    if request.method == 'POST':
+        nombre = request.form['nombre']
+        apellido = request.form['apellido']
+        email = request.form['email']
+        password = generate_password_hash(request.form['password'])
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute('INSERT INTO usuarios (nombre, apellido, email, password) VALUES (%s, %s, %s, %s)',
+                    (nombre, apellido, email, password))
+        conn.commit()
+        cur.close()
+        conn.close()
+        return redirect(url_for('login'))
+    return render_template("registrarse.html")
+
 
 @app.route("/profile", methods=['GET', 'POST'])
 def profile():
