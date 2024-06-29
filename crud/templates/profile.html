@@ -12,21 +12,21 @@
     <form name="registro" id="register" action="{{ url_for('profile') }}" method="POST" autocomplete="off">
         <div class="row">
             <div>
-                <label for="nombre">Nombre</label>
+                <label for="nombre" class="form-label">Nombre</label>
                 <input type="text" required name="nombre" class="form-control" autofocus required>
             </div>
             <div>
-                <label for="apellido">Apellido</label>
+                <label for="apellido" class="forma-label">Apellido</label>
                 <input type="text" required name="apellido" class="form-control" required>
             </div>
         </div>
         <div>
-            <label for="email" >Email</label>
+            <label for="email" class="forma-label mt-3">Email</label>
             <input type="email" required name="email" class="form-control" required>
         </div>
         <div class="row">
             <div>
-                <label for="password" >Password</label>
+                <label for="password" class="forma-label mt-3">Password</label>
                 <input type="password" required name="password" class="form-control" required>
             </div>
             <div>
