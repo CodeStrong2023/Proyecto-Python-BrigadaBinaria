@@ -59,9 +59,6 @@ def profile():
 def budget():
     return render_template('budget.html')
 
-@app.route('/inc_exp')
-def incomes_expenses():
-    return render_template('inc_exp.html')
 
 @app.route("/registrarse", methods=['GET', 'POST'])
 def registrarse():
