@@ -36,3 +36,54 @@ form {
     align-items: center;
     justify-content: center;
 }
+.form-label {
+    margin-bottom: 10px;
+    color: #7D3C98;
+    text-align: center;
+}
+
+input[type="text"],[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-sizing: border-box;
+    transition: border 0.3s;
+}
+
+input[type="text"]:hover, input[type="email"]:hover, input[type="password"]:hover {
+    border: 3px solid  #7D3C98;
+}
+
+.boton-enviar-reg {
+    background-color: white;
+    border: 3px solid #7D3C98;
+    color: #7D3C98;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.boton-enviar-reg:hover {
+    background-color: #7D3C98;
+    color: white;
+}
+
+.tiene-cuenta {
+    margin-top: 20px;
+    text-align: center;
+    color: #7D3C98;
+    text-decoration: none;
+}
+
+.ir-login {
+    color: #7D3C98;
+    text-decoration: none;
+}
+
+.ir-login:hover {
+    text-decoration: underline;
+}
